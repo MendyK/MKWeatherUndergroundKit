@@ -4,7 +4,7 @@ A simple iOS and OS X library for retrieving weather information using the Weath
 
 ##Getting Started
 
-You'll need a [weather underground API key](http://www.wunderground.com/weather/api/) to start.
+You'll need a [Weather Underground API key](http://www.wunderground.com/weather/api/) to start.
 
 ###Getting the Current Conditions
 ````smalltalk
