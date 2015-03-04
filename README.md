@@ -44,7 +44,7 @@ Thanks to [Comyar Zaheri](http://comyar.io) for the `Climacons.h` file, as well 
   
 ````
 ##Dependencies
-Core Location
+This library uses `Core Location` to perform requests.
 
 ##Architecture
 `MKWeatherCondition` - A generic weather condition
