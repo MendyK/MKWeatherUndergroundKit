@@ -40,7 +40,7 @@ You'll need a [Weather Underground API key](http://www.wunderground.com/weather/
   
 ````
 ###Climacons
-Thanks to [Comyar Zaheri](http://comyar.io) for the `Climacons.h` file, as well as the description below.
+Thanks to [Comyar Zaheri](https://github.com/comyarzaheri) for the `Climacons.h` file, as well as the description below.
 
 
 `MKWeatherCondition` objects have a `climacon` property that contains an appropriate climacon character mapping for the weather condition description. The [Climacons Font](http://adamwhitcroft.com/climacons/font/) is a font set created by [Adam Whitcroft](http://adamwhitcroft.com/) featuring various weather-related icons. In order to use the `climacon` property, download the Climacons font and add it to your project. 
