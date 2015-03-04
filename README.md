@@ -1,5 +1,5 @@
 # MKWeatherUndergroundKit
-A simple Cocoa/Cocoa Touch library for retrieving weather information using the Weather Underground API
+A simple iOS and OS X library for retrieving weather information using the Weather Underground API
 
 
 ##Getting Started
