@@ -5,11 +5,6 @@ A simple Cocoa/Cocoa Touch library for retrieving weather information using the 
 ##Getting Started
 
 You'll need a [weather underground API key](http://www.wunderground.com/weather/api/) to start.
-###Climacons
-Thanks to [Comyar Zaheri](http://comyar.io) for the `Climacons.h` file, as well as the description below.
-
-
-`MKWeatherCondition` objects have a `climacon` property that contains an appropriate climacon character mapping for the weather condition description. The [Climacons Font](http://adamwhitcroft.com/climacons/font/) is a font set created by [Adam Whitcroft](http://adamwhitcroft.com/) featuring various weather-related icons. In order to use the `climacon` property, download the Climacons font and add it to your project. 
 
 ###Getting the Current Conditions
 ````smalltalk
@@ -44,6 +39,12 @@ Thanks to [Comyar Zaheri](http://comyar.io) for the `Climacons.h` file, as well 
     
   
 ````
+###Climacons
+Thanks to [Comyar Zaheri](http://comyar.io) for the `Climacons.h` file, as well as the description below.
+
+
+`MKWeatherCondition` objects have a `climacon` property that contains an appropriate climacon character mapping for the weather condition description. The [Climacons Font](http://adamwhitcroft.com/climacons/font/) is a font set created by [Adam Whitcroft](http://adamwhitcroft.com/) featuring various weather-related icons. In order to use the `climacon` property, download the Climacons font and add it to your project. 
+
 ##Dependencies
 This library uses `Core Location` to perform requests.
 
