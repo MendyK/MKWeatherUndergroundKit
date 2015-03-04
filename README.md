@@ -4,6 +4,7 @@ A simple Cocoa/Cocoa Touch library for retrieving weather information using the 
 
 ##Getting Started
 
+You'll need a [weather underground API key](http://www.wunderground.com/weather/api/) to start.
 ###Climacons
 Thanks to [Comyar Zaheri](http://comyar.io) for the `Climacons.h` file, as well as the description below.
 
