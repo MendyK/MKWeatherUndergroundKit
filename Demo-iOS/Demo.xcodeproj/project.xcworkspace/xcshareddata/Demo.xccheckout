@@ -12,22 +12,34 @@
 	<dict>
 		<key>02DCEDD74F5998A75767A82179FCE470213D34CD</key>
 		<string>bitbucket.org:MendK/mmweatherundergroundapi.git</string>
+		<key>55290F193B03B83A2E14246741776D17FE5F80CB</key>
+		<string>https://github.com/MendyK/MKWeatherUndergroundKit.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Demo-iOS/Demo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>02DCEDD74F5998A75767A82179FCE470213D34CD</key>
+		<string>../../../../WUndergroundAPI</string>
+		<key>55290F193B03B83A2E14246741776D17FE5F80CB</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>bitbucket.org:MendK/mmweatherundergroundapi.git</string>
+	<string>https://github.com/MendyK/MKWeatherUndergroundKit.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>02DCEDD74F5998A75767A82179FCE470213D34CD</string>
+	<string>55290F193B03B83A2E14246741776D17FE5F80CB</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>55290F193B03B83A2E14246741776D17FE5F80CB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MKWeatherUndergroundKit</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

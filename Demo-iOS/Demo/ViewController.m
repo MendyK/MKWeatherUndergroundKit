@@ -23,6 +23,8 @@
     [super viewDidLoad];
 
     CLGeocoder *geocoder = [CLGeocoder new];
+    
+    __weak typeof(self)weakSelf = self;
     [geocoder geocodeAddressString:self.locationToSearch completionHandler:^(NSArray *placemarks, NSError *error) {
         CLPlacemark *placemark = [placemarks firstObject];
         
@@ -31,12 +33,12 @@
         [request performRequestWithHandler:^(NSError *error, id responseObject) {
             
             MKWeatherCondition *current = responseObject;
-            _climaconLabel.text = [NSString stringWithFormat:@"%c",
+            weakSelf.climaconLabel.text = [NSString stringWithFormat:@"%c",
                                    current.climacon];
             
-            _summaryLabel.text = [NSString stringWithFormat:@"%@", current.summary];
-            _location.text = [NSString stringWithFormat:@"%@, %@, %@",placemark.locality, placemark.administrativeArea, placemark.country];
-            _tempLabel.text = [NSString stringWithFormat:@"%i°",(int) current.temperature.f];
+            weakSelf.summaryLabel.text = [NSString stringWithFormat:@"%@", current.summary];
+            weakSelf.location.text = [NSString stringWithFormat:@"%@, %@, %@",placemark.locality, placemark.administrativeArea, placemark.country];
+            weakSelf.tempLabel.text = [NSString stringWithFormat:@"%i°",(int) current.temperature.f];
         }];
     }];
     
