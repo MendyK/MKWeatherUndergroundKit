@@ -86,7 +86,8 @@
         condition.highTemp.c = [day[@"high"][@"celsius"]floatValue];
         condition.lowTemp.f = [day[@"low"][@"fahrenheit"]floatValue];
         condition.lowTemp.c = [day[@"low"][@"celsius"]floatValue];
-        
+        condition.climacon = [self climaconForIconLink:day [@"icon_url"] name:condition.iconName];
+
         [tempDayArray addObject:condition];
     }
     return [tempDayArray copy];
