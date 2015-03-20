@@ -9,8 +9,8 @@
 #import "MKWeatherRequest.h"
 #import "MKWeatherParser.h"
 
-
-NSString *const kWUndergroundApi_key = ((WEATHER_UNDERGROUND_API_KEY_HERE));
+#warning insert API key here
+NSString *const kWUndergroundApi_key = @"INSERT API KEY HERE";
 NSString *const kBaseURL = @"http://api.wunderground.com/api";
 NSString *const MKWeatherRequestErrorDomain = @"MKWeatherRequestErrorDomain";
 

@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC6B16501AA67986005CBF2D /* Climacons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC6B16461AA67986005CBF2D /* Climacons.ttf */; };
-		AC6B16511AA67986005CBF2D /* MKWeatherCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6B16481AA67986005CBF2D /* MKWeatherCondition.m */; };
-		AC6B16521AA67986005CBF2D /* MKWeatherParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6B164A1AA67986005CBF2D /* MKWeatherParser.m */; };
-		AC6B16531AA67986005CBF2D /* MKWeatherRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6B164C1AA67986005CBF2D /* MKWeatherRequest.m */; };
-		AC6B16541AA67986005CBF2D /* NSString+Reversal.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6B164F1AA67986005CBF2D /* NSString+Reversal.m */; };
+		ACA69BD81ABBC6B700688283 /* Climacons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACA69BCE1ABBC6B700688283 /* Climacons.ttf */; };
+		ACA69BD91ABBC6B700688283 /* MKWeatherCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA69BD01ABBC6B700688283 /* MKWeatherCondition.m */; };
+		ACA69BDA1ABBC6B700688283 /* MKWeatherParser.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA69BD21ABBC6B700688283 /* MKWeatherParser.m */; };
+		ACA69BDB1ABBC6B700688283 /* MKWeatherRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA69BD41ABBC6B700688283 /* MKWeatherRequest.m */; };
+		ACA69BDC1ABBC6B700688283 /* NSString+Reversal.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA69BD71ABBC6B700688283 /* NSString+Reversal.m */; };
 		ACBB00581A9581B00013F55A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ACBB00571A9581B00013F55A /* main.m */; };
 		ACBB005B1A9581B00013F55A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ACBB005A1A9581B00013F55A /* AppDelegate.m */; };
 		ACBB005E1A9581B00013F55A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACBB005D1A9581B00013F55A /* ViewController.m */; };
@@ -33,17 +33,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AC6B16451AA67986005CBF2D /* Climacons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Climacons.h; sourceTree = "<group>"; };
-		AC6B16461AA67986005CBF2D /* Climacons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Climacons.ttf; sourceTree = "<group>"; };
-		AC6B16471AA67986005CBF2D /* MKWeatherCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWeatherCondition.h; sourceTree = "<group>"; };
-		AC6B16481AA67986005CBF2D /* MKWeatherCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWeatherCondition.m; sourceTree = "<group>"; };
-		AC6B16491AA67986005CBF2D /* MKWeatherParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWeatherParser.h; sourceTree = "<group>"; };
-		AC6B164A1AA67986005CBF2D /* MKWeatherParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWeatherParser.m; sourceTree = "<group>"; };
-		AC6B164B1AA67986005CBF2D /* MKWeatherRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWeatherRequest.h; sourceTree = "<group>"; };
-		AC6B164C1AA67986005CBF2D /* MKWeatherRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWeatherRequest.m; sourceTree = "<group>"; };
-		AC6B164D1AA67986005CBF2D /* MKWUndergroundKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWUndergroundKit.h; sourceTree = "<group>"; };
-		AC6B164E1AA67986005CBF2D /* NSString+Reversal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Reversal.h"; sourceTree = "<group>"; };
-		AC6B164F1AA67986005CBF2D /* NSString+Reversal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Reversal.m"; sourceTree = "<group>"; };
+		ACA69BCD1ABBC6B700688283 /* Climacons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Climacons.h; sourceTree = "<group>"; };
+		ACA69BCE1ABBC6B700688283 /* Climacons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Climacons.ttf; sourceTree = "<group>"; };
+		ACA69BCF1ABBC6B700688283 /* MKWeatherCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWeatherCondition.h; sourceTree = "<group>"; };
+		ACA69BD01ABBC6B700688283 /* MKWeatherCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWeatherCondition.m; sourceTree = "<group>"; };
+		ACA69BD11ABBC6B700688283 /* MKWeatherParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWeatherParser.h; sourceTree = "<group>"; };
+		ACA69BD21ABBC6B700688283 /* MKWeatherParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWeatherParser.m; sourceTree = "<group>"; };
+		ACA69BD31ABBC6B700688283 /* MKWeatherRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWeatherRequest.h; sourceTree = "<group>"; };
+		ACA69BD41ABBC6B700688283 /* MKWeatherRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWeatherRequest.m; sourceTree = "<group>"; };
+		ACA69BD51ABBC6B700688283 /* MKWUndergroundKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWUndergroundKit.h; sourceTree = "<group>"; };
+		ACA69BD61ABBC6B700688283 /* NSString+Reversal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Reversal.h"; sourceTree = "<group>"; };
+		ACA69BD71ABBC6B700688283 /* NSString+Reversal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Reversal.m"; sourceTree = "<group>"; };
 		ACBB00521A9581B00013F55A /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACBB00561A9581B00013F55A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACBB00571A9581B00013F55A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -80,23 +80,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AC6B16441AA67986005CBF2D /* MKWUndergroundKit */ = {
+		ACA69BCC1ABBC6B700688283 /* MKWeatherUndergroundKit */ = {
 			isa = PBXGroup;
 			children = (
-				AC6B16451AA67986005CBF2D /* Climacons.h */,
-				AC6B16461AA67986005CBF2D /* Climacons.ttf */,
-				AC6B16471AA67986005CBF2D /* MKWeatherCondition.h */,
-				AC6B16481AA67986005CBF2D /* MKWeatherCondition.m */,
-				AC6B16491AA67986005CBF2D /* MKWeatherParser.h */,
-				AC6B164A1AA67986005CBF2D /* MKWeatherParser.m */,
-				AC6B164B1AA67986005CBF2D /* MKWeatherRequest.h */,
-				AC6B164C1AA67986005CBF2D /* MKWeatherRequest.m */,
-				AC6B164D1AA67986005CBF2D /* MKWUndergroundKit.h */,
-				AC6B164E1AA67986005CBF2D /* NSString+Reversal.h */,
-				AC6B164F1AA67986005CBF2D /* NSString+Reversal.m */,
+				ACA69BCD1ABBC6B700688283 /* Climacons.h */,
+				ACA69BCE1ABBC6B700688283 /* Climacons.ttf */,
+				ACA69BCF1ABBC6B700688283 /* MKWeatherCondition.h */,
+				ACA69BD01ABBC6B700688283 /* MKWeatherCondition.m */,
+				ACA69BD11ABBC6B700688283 /* MKWeatherParser.h */,
+				ACA69BD21ABBC6B700688283 /* MKWeatherParser.m */,
+				ACA69BD31ABBC6B700688283 /* MKWeatherRequest.h */,
+				ACA69BD41ABBC6B700688283 /* MKWeatherRequest.m */,
+				ACA69BD51ABBC6B700688283 /* MKWUndergroundKit.h */,
+				ACA69BD61ABBC6B700688283 /* NSString+Reversal.h */,
+				ACA69BD71ABBC6B700688283 /* NSString+Reversal.m */,
 			);
-			name = MKWUndergroundKit;
-			path = ../../MKWUndergroundKit;
+			name = MKWeatherUndergroundKit;
+			path = ../../MKWeatherUndergroundKit;
 			sourceTree = "<group>";
 		};
 		ACBB00491A9581AF0013F55A = {
@@ -121,7 +121,7 @@
 		ACBB00541A9581B00013F55A /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				AC6B16441AA67986005CBF2D /* MKWUndergroundKit */,
+				ACA69BCC1ABBC6B700688283 /* MKWeatherUndergroundKit */,
 				ACBB00591A9581B00013F55A /* AppDelegate.h */,
 				ACBB005A1A9581B00013F55A /* AppDelegate.m */,
 				ACBB005C1A9581B00013F55A /* ViewController.h */,
@@ -244,7 +244,7 @@
 			files = (
 				ACBB00611A9581B00013F55A /* Main.storyboard in Resources */,
 				ACBB00661A9581B00013F55A /* LaunchScreen.xib in Resources */,
-				AC6B16501AA67986005CBF2D /* Climacons.ttf in Resources */,
+				ACA69BD81ABBC6B700688283 /* Climacons.ttf in Resources */,
 				ACBB00631A9581B00013F55A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,12 +263,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC6B16511AA67986005CBF2D /* MKWeatherCondition.m in Sources */,
-				AC6B16531AA67986005CBF2D /* MKWeatherRequest.m in Sources */,
+				ACA69BD91ABBC6B700688283 /* MKWeatherCondition.m in Sources */,
+				ACA69BDB1ABBC6B700688283 /* MKWeatherRequest.m in Sources */,
 				ACBB005E1A9581B00013F55A /* ViewController.m in Sources */,
 				ACBB00C71A95897E0013F55A /* SearchViewController.m in Sources */,
-				AC6B16521AA67986005CBF2D /* MKWeatherParser.m in Sources */,
-				AC6B16541AA67986005CBF2D /* NSString+Reversal.m in Sources */,
+				ACA69BDA1ABBC6B700688283 /* MKWeatherParser.m in Sources */,
+				ACA69BDC1ABBC6B700688283 /* NSString+Reversal.m in Sources */,
 				ACBB005B1A9581B00013F55A /* AppDelegate.m in Sources */,
 				ACBB00581A9581B00013F55A /* main.m in Sources */,
 			);
