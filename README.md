@@ -54,9 +54,9 @@ This library uses `Core Location` to perform requests.
 `MKWeatherParser` - Parses the weather information received from the Weather Underground API
 
 `MKWeatherRequest` - Represents a single request to the Weather Underground API
-##Cocoapods
+##CocoaPods
 
-Use `pod 'MKWeatherUndergroundKit', '~> 0.4'`
+To use this with CocoaPods, add `pod 'MKWeatherUndergroundKit', '~> 0.4'` to your podfile
 
 ##License
 The MIT License (MIT)
