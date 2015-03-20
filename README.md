@@ -56,7 +56,7 @@ This library uses `Core Location` to perform requests.
 `MKWeatherRequest` - Represents a single request to the Weather Underground API
 ##CocoaPods
 
-To use this with CocoaPods, add `pod 'MKWeatherUndergroundKit', '~> 0.4'` to your podfile
+To use this with CocoaPods, add `pod 'MKWeatherUndergroundKit'` to your podfile
 
 ##License
 The MIT License (MIT)
