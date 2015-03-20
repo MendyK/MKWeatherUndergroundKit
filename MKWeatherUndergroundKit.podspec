@@ -16,7 +16,7 @@ s.platform = :ios
   }
   s.source_files  = "MKWeatherUndergroundKit/*.{h,m}"
   s.resources = "MKWeatherUndergroundKit/Climacons.ttf"
-  pod  = "Demo-iOS/*"
+
   s.requires_arc = true
   s.frameworks = 'CoreGraphics', 'CoreLocation'
 end
