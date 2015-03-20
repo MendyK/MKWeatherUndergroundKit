@@ -7,8 +7,9 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Mendy Krinsky" => "mendyk3@gmail.com" }
   s.social_media_url   = "https://twitter.com/MenndK"
-  s.platform = :ios
-s.source       = { :git => "https://github.com/MendyK/MKWeatherUndergroundKit.git", :tag => "0.4"}
+  s.ios.deployment_target = "8.0"
+  s.osx.deployment_target = "10.10"
+  s.source       = { :git => "https://github.com/MendyK/MKWeatherUndergroundKit.git", :tag => "0.4"}
 
   s.source_files  = "MKWeatherUndergroundKit/*.{h,m}"
   s.resources = "MKWeatherUndergroundKit/Climacons.ttf"
