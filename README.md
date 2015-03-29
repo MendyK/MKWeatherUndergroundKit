@@ -39,7 +39,7 @@ You'll need a [Weather Underground API key](http://www.wunderground.com/weather/
 ````
 ### Getting the forecast for the next 3 days
  
-````
+````smalltalk
     CLGeocoder *geocoder = [CLGeocoder new];
     [geocoder geocodeAddressString:@"London, England" completionHandler:^(NSArray *placemarks, NSError *error)     {
         CLPlacemark *placemark = [placemarks firstObject];
@@ -61,7 +61,7 @@ You'll need a [Weather Underground API key](http://www.wunderground.com/weather/
 ````
 
 ### Getting the forecast for the next 3 days with a small summary
-````
+````smalltalk
     CLGeocoder *geocoder = [CLGeocoder new];
     [geocoder geocodeAddressString:@"New Mexico" completionHandler:^(NSArray *placemarks, NSError *error)     {
         CLPlacemark *placemark = [placemarks firstObject];
