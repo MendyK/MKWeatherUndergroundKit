@@ -36,9 +36,51 @@ You'll need a [Weather Underground API key](http://www.wunderground.com/weather/
             //Array of MKWeatherCondition Objects
         }];
     }];
-    
-  
 ````
+### Getting the forecast for the next 3 days
+ 
+````
+    CLGeocoder *geocoder = [CLGeocoder new];
+    [geocoder geocodeAddressString:@"London, England" completionHandler:^(NSArray *placemarks, NSError *error)     {
+        CLPlacemark *placemark = [placemarks firstObject];
+        
+        MKWeatherRequest *request = [MKWeatherRequest requestWithType:MKWeatherRequestType3DayForecast
+                                                             location:placemark.location];
+        [request performRequestWithHandler:^(NSError *error, id responseObject) {
+            NSArray *threeDayForecast = responseObject;
+            //Here, responseObject is an array that contains 4 objects: tonight, and the next three days.
+
+            MKWeatherCondition *tonightsConditions = [threeDayForecast firstObject];
+            
+            NSLog(@"%f", tonightsConditions.highTemp.c);
+            NSLog(@"%f", tonightsConditions.lowTemp.c);
+            NSLog(@"%ld", (long)tonightsConditions.averageHumudity);
+            
+        }];
+    }];
+````
+
+### Getting the forecast for the next 3 days with a small summary
+````
+    CLGeocoder *geocoder = [CLGeocoder new];
+    [geocoder geocodeAddressString:@"New Mexico" completionHandler:^(NSArray *placemarks, NSError *error)     {
+        CLPlacemark *placemark = [placemarks firstObject];
+        
+        MKWeatherRequest *request = [MKWeatherRequest requestWithType:MKWeatherRequestType3DayForecastSummary
+                                                             location:placemark.location];
+        [request performRequestWithHandler:^(NSError *error, id responseObject) {
+            NSArray *threeDayForecast = responseObject;
+            //Here, responseObject is an array which contains 8 objects
+            
+            MKWeatherCondition *condition = [threeDayForecast firstObject];
+            NSLog(@"%@", condition.generalTimeOfDayTitle);
+            NSLog(@"%@", condition.fullSummaryC);
+            NSLog(@"%@", condition.fullSummaryF);
+            
+        }];
+    }];
+````
+
 ###Climacons
 Thanks to [Comyar Zaheri](https://github.com/comyarzaheri) for the `Climacons.h` file, as well as the description below.
 
