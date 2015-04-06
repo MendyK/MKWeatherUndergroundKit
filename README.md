@@ -48,7 +48,7 @@ You'll need a [Weather Underground API key](http://www.wunderground.com/weather/
                                                              location:placemark.location];
         [request performRequestWithHandler:^(NSError *error, id responseObject) {
             NSArray *threeDayForecast = responseObject;
-            //Here, responseObject is an array that contains 4 objects: tonight, and the next three days.
+            //Here responseObject is an array that contains 4 objects: tonight, and the next three days.
 
             MKWeatherCondition *tonightsConditions = [threeDayForecast firstObject];
             
@@ -70,7 +70,7 @@ You'll need a [Weather Underground API key](http://www.wunderground.com/weather/
                                                              location:placemark.location];
         [request performRequestWithHandler:^(NSError *error, id responseObject) {
             NSArray *threeDayForecast = responseObject;
-            //Here, responseObject is an array which contains 8 objects
+            //Here responseObject is an array which contains 8 objects
             
             MKWeatherCondition *condition = [threeDayForecast firstObject];
             NSLog(@"%@", condition.generalTimeOfDayTitle);
