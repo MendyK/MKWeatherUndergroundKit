@@ -13,7 +13,7 @@
 #import "Climacons.h"
 #import "NSString+Reversal.h"
 
-/** 
+/**
  Check if given option is present.
  */
 #define OptionPresent(options, value) (((options & (value)) == (value))
@@ -32,7 +32,7 @@
 #pragma mark - Parsing
 - (id)parseJson: (id)JSON
 {
-//    [self printNumber:self.parsingType];
+    //    [self printNumber:self.parsingType];
     
     if (OptionPresent(self.parsingType, MKWeatherRequestType10DayForecast)))
     {
@@ -87,7 +87,7 @@
         condition.lowTemp.f = [day[@"low"][@"fahrenheit"]doubleValue];
         condition.lowTemp.c = [day[@"low"][@"celsius"]doubleValue];
         condition.climacon = [self climaconForIconLink:day [@"icon_url"] name:condition.iconName];
-
+        
         [tempDayArray addObject:condition];
     }
     return [tempDayArray copy];
@@ -114,7 +114,7 @@
     currentWeather.dewPoint = [MKTemperature new];
     currentWeather.feelsLike = [MKTemperature new];
     currentWeather.visibility = [MKDistance new];
-
+    
     currentWeather.lastUpdated = locationInfo[@"observation_time"];
     currentWeather.date = [NSDate dateWithTimeIntervalSince1970:[weatherDict[@"observation_epoch"]integerValue]];
     currentWeather.summary = weatherDict[@"weather"];
@@ -162,7 +162,7 @@
         component.dewPoint = [MKTemperature new];
         component.windSpeed = [MKDistance new];
         component.humudity = [NSString new];
-
+        
         component.temperature.f = [tempStrings[@"english"]doubleValue];
         component.temperature.c = [tempStrings[@"metric"]doubleValue];
         component.date = [NSDate dateWithTimeIntervalSince1970:[hour[@"FCTTIME"][@"epoch"]integerValue]];

@@ -13,15 +13,15 @@
 {
     self = [super init];
     if (self) {
-        _f = [coder decodeFloatForKey:@"mk_farenheit"];
-        _c = [coder decodeFloatForKey:@"mk_celsius"];
+        _f = [coder decodeDoubleForKey:@"mk_farenheit"];
+        _c = [coder decodeDoubleForKey:@"mk_celsius"];
     }
     return self;
 }
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeFloat:self.f forKey:@"mk_farenheit"];
-    [aCoder encodeFloat:self.c forKey:@"mk_celsius"];
+    [aCoder encodeDouble:self.f forKey:@"mk_farenheit"];
+    [aCoder encodeDouble:self.c forKey:@"mk_celsius"];
 }
 
 @end
@@ -32,15 +32,15 @@
 {
     self = [super init];
     if (self) {
-        _mph = [coder decodeFloatForKey:@"mk_mph"];
-        _kph = [coder decodeFloatForKey:@"mk_kph"];
+        _mph = [coder decodeDoubleForKey:@"mk_mph"];
+        _kph = [coder decodeDoubleForKey:@"mk_kph"];
     }
     return self;
 }
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeFloat:self.mph forKey:@"mk_mph"];
-    [aCoder encodeFloat:self.kph forKey:@"mk_kph"];
+    [aCoder encodeDouble:self.mph forKey:@"mk_mph"];
+    [aCoder encodeDouble:self.kph forKey:@"mk_kph"];
 }
 @end
 
@@ -51,14 +51,14 @@
     self = [super init];
     if (self) {
         self.direction = [coder decodeObjectForKey:@"mk_direction"];
-        self.degrees = [coder decodeFloatForKey:@"mk_degrees"];
+        self.degrees = [coder decodeDoubleForKey:@"mk_degrees"];
     }
     return self;
 }
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.direction forKey:@"mk_direction"];
-    [aCoder encodeFloat:self.degrees forKey:@"mk_degrees"];
+    [aCoder encodeDouble:self.degrees forKey:@"mk_degrees"];
 }
 @end
 
@@ -84,7 +84,7 @@
         _relativeHumidity       = [coder decodeObjectForKey:@"mk_relativeHumidity"];
         _feelsLike              = [coder decodeObjectForKey:@"mk_feelsLike"];
         _visibility             = [coder decodeObjectForKey:@"mk_visibility"];
-        _pressure_inches        = [coder decodeFloatForKey:@"mk_pressure_inches"];
+        _pressure_inches        = [coder decodeDoubleForKey:@"mk_pressure_inches"];
         _UVIndex                = [coder decodeIntegerForKey:@"mk_UVIndex"];
         _windGust               = [coder decodeObjectForKey:@"mk_windGust"];
         _windDirection          = [coder decodeObjectForKey:@"mk_windDirection"];
@@ -114,7 +114,7 @@
     [aCoder encodeObject:self.relativeHumidity forKey:@"mk_relativeHumidity"];
     [aCoder encodeObject:self.feelsLike forKey:@"mk_feelsLike"];
     [aCoder encodeObject:self.visibility forKey:@"mk_visibility"];
-    [aCoder encodeFloat:self.pressure_inches forKey:@"mk_pressure_inches"];
+    [aCoder encodeDouble:self.pressure_inches forKey:@"mk_pressure_inches"];
     [aCoder encodeInteger:self.pressure_inches forKey:@"mk_pressure_inches"];
     [aCoder encodeObject:self.windGust forKey:@"mk_windGust"];
     [aCoder encodeObject:self.windDirection forKey:@"mk_windDirection"];

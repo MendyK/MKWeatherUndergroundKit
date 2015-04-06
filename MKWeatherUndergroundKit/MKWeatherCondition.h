@@ -88,9 +88,9 @@
  */
 @property (nonatomic, strong) MKTemperature *lowTemp;
 
-/** 
+/**
  Humidity
-*/
+ */
 @property (nonatomic, strong)NSString *humudity;
 
 /**
@@ -131,7 +131,7 @@
 
 /**
  UV index
-*/
+ */
 @property (nonatomic)NSUInteger UVIndex;
 
 /**
@@ -157,7 +157,7 @@
 /**
  Day title
  
- e.g 'Monday', 'Monday night'... 
+ e.g 'Monday', 'Monday night'...
  
  Available only when requesting full summaries
  */
@@ -177,12 +177,12 @@
  
  e.g. "A mix of clouds and sun. High -1C. Winds WNW at 15 to 30 km/h."
  
-  Available only when requesting full summaries
+ Available only when requesting full summaries
  */
 @property (nonatomic, strong) NSString *fullSummaryC;
 
 
-/** 
+/**
  */
 @property (nonatomic)NSInteger averageHumudity;
 
