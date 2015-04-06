@@ -82,10 +82,10 @@
         
         condition.highTemp = [MKTemperature new];
         condition.lowTemp = [MKTemperature new];
-        condition.highTemp.f = [day[@"high"][@"fahrenheit"]floatValue];
-        condition.highTemp.c = [day[@"high"][@"celsius"]floatValue];
-        condition.lowTemp.f = [day[@"low"][@"fahrenheit"]floatValue];
-        condition.lowTemp.c = [day[@"low"][@"celsius"]floatValue];
+        condition.highTemp.f = [day[@"high"][@"fahrenheit"]doubleValue];
+        condition.highTemp.c = [day[@"high"][@"celsius"]doubleValue];
+        condition.lowTemp.f = [day[@"low"][@"fahrenheit"]doubleValue];
+        condition.lowTemp.c = [day[@"low"][@"celsius"]doubleValue];
         condition.climacon = [self climaconForIconLink:day [@"icon_url"] name:condition.iconName];
 
         [tempDayArray addObject:condition];
@@ -118,25 +118,25 @@
     currentWeather.lastUpdated = locationInfo[@"observation_time"];
     currentWeather.date = [NSDate dateWithTimeIntervalSince1970:[weatherDict[@"observation_epoch"]integerValue]];
     currentWeather.summary = weatherDict[@"weather"];
-    currentWeather.temperature.f = [weatherDict[@"temp_f"]floatValue];
-    currentWeather.temperature.c = [weatherDict[@"temp_c"]floatValue];
+    currentWeather.temperature.f = [weatherDict[@"temp_f"]doubleValue];
+    currentWeather.temperature.c = [weatherDict[@"temp_c"]doubleValue];
     currentWeather.relativeHumidity = weatherDict[@"relative_humidity"];
-    currentWeather.dewPoint.f = [weatherDict [@"dewpoint_f"]floatValue];
-    currentWeather.dewPoint.c = [weatherDict [@"dewpoint_c"]floatValue];
-    currentWeather.feelsLike.f = [weatherDict [@"feelslike_f"]floatValue];
-    currentWeather.feelsLike.c = [weatherDict [@"feelslike_c"]floatValue];
-    currentWeather.visibility.mph = [weatherDict[@"visibility_mi"]floatValue];
-    currentWeather.visibility.kph = [weatherDict[@"visibility_km"]floatValue];
-    currentWeather.pressure_inches = [weatherDict[@"pressure_in"]floatValue];
+    currentWeather.dewPoint.f = [weatherDict [@"dewpoint_f"]doubleValue];
+    currentWeather.dewPoint.c = [weatherDict [@"dewpoint_c"]doubleValue];
+    currentWeather.feelsLike.f = [weatherDict [@"feelslike_f"]doubleValue];
+    currentWeather.feelsLike.c = [weatherDict [@"feelslike_c"]doubleValue];
+    currentWeather.visibility.mph = [weatherDict[@"visibility_mi"]doubleValue];
+    currentWeather.visibility.kph = [weatherDict[@"visibility_km"]doubleValue];
+    currentWeather.pressure_inches = [weatherDict[@"pressure_in"]doubleValue];
     currentWeather.windSummary = weatherDict[@"wind_string"];
     currentWeather.windDirection.direction = weatherDict[@"wind_dir"];
     currentWeather.windDirection.degrees = [weatherDict[@"wind_degrees"]doubleValue];
-    currentWeather.windSpeed.mph = [weatherDict[@"wind_mph"]floatValue];
-    currentWeather.windSpeed.kph = [weatherDict[@"wind_kph"]floatValue];
-    currentWeather.windGust.mph = [weatherDict[@"wind_gust_mph"]floatValue];
-    currentWeather.windGust.kph = [weatherDict[@"wind_gust_kph"]floatValue];
-    currentWeather.windChill.f = [weatherDict [@"windchill_f"]floatValue];
-    currentWeather.windChill.c = [weatherDict [@"windchill_c"]floatValue];
+    currentWeather.windSpeed.mph = [weatherDict[@"wind_mph"]doubleValue];
+    currentWeather.windSpeed.kph = [weatherDict[@"wind_kph"]doubleValue];
+    currentWeather.windGust.mph = [weatherDict[@"wind_gust_mph"]doubleValue];
+    currentWeather.windGust.kph = [weatherDict[@"wind_gust_kph"]doubleValue];
+    currentWeather.windChill.f = [weatherDict [@"windchill_f"]doubleValue];
+    currentWeather.windChill.c = [weatherDict [@"windchill_c"]doubleValue];
     currentWeather.UVIndex = [weatherDict[@"UV"]integerValue];
     currentWeather.iconName = weatherDict[@"icon"];
     currentWeather.iconImageURL = [NSURL URLWithString:weatherDict[@"icon_url"]];
@@ -170,10 +170,10 @@
         component.summary = hour[@"condition"];
         component.iconImageURL = [NSURL URLWithString:hour[@"icon_url"]];
         component.climacon = [self climaconForIconLink:hour[@"icon_url"] name:component.iconName];
-        component.dewPoint.f = [hour[@"dewpoint"][@"english"]floatValue];
-        component.dewPoint.c = [hour[@"dewpoint"][@"metric"]floatValue];
-        component.windSpeed.mph = [hour[@"wspd"][@"english"]floatValue];
-        component.windSpeed.kph = [hour[@"wspd"][@"metric"]floatValue];
+        component.dewPoint.f = [hour[@"dewpoint"][@"english"]doubleValue];
+        component.dewPoint.c = [hour[@"dewpoint"][@"metric"]doubleValue];
+        component.windSpeed.mph = [hour[@"wspd"][@"english"]doubleValue];
+        component.windSpeed.kph = [hour[@"wspd"][@"metric"]doubleValue];
         component.humudity = hour[@"humidity"];
         [hourlyWeatherComponents addObject:component];
     }
@@ -195,10 +195,10 @@
         component.highTemp = [MKTemperature new];
         component.lowTemp = [MKTemperature new];
         
-        component.highTemp.f = [day[@"high"][@"fahrenheit"]floatValue];
-        component.highTemp.c = [day[@"high"][@"celsius"]floatValue];
-        component.lowTemp.f = [day[@"low"][@"fahrenheit"]floatValue];
-        component.lowTemp.c = [day[@"low"][@"celsius"]floatValue];
+        component.highTemp.f = [day[@"high"][@"fahrenheit"]doubleValue];
+        component.highTemp.c = [day[@"high"][@"celsius"]doubleValue];
+        component.lowTemp.f = [day[@"low"][@"fahrenheit"]doubleValue];
+        component.lowTemp.c = [day[@"low"][@"celsius"]doubleValue];
         component.averageHumudity = [day[@"avehumidity"]integerValue];
         component.iconName = day[@"icon"];
         component.iconImageURL = [NSURL URLWithString:day[@"icon_url"]];

@@ -13,5 +13,5 @@ Pod::Spec.new do |s|
   s.source_files  = "MKWeatherUndergroundKit/*.{h,m}"
   s.resources = "MKWeatherUndergroundKit/Climacons.ttf"
   s.requires_arc = true
-  s.frameworks = 'CoreGraphics', 'CoreLocation'
+  s.frameworks = 'CoreLocation'
 end

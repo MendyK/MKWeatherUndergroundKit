@@ -8,25 +8,24 @@
 
 #import <Foundation/Foundation.h>
 #import "Climacons.h"
-#import <CoreGraphics/CoreGraphics.h>
 
 
 ////////////////////////////////////////////////////
 ////////////////// COMMON TYPES ////////////////////
 ////////////////////////////////////////////////////
 @interface MKTemperature : NSObject<NSCoding>
-@property (nonatomic)CGFloat f;
-@property (nonatomic)CGFloat c;
+@property (nonatomic)double f;
+@property (nonatomic)double c;
 @end
 
 @interface MKDistance : NSObject<NSCoding>
-@property (nonatomic) CGFloat kph;
-@property (nonatomic) CGFloat mph;
+@property (nonatomic) double kph;
+@property (nonatomic) double mph;
 @end
 
 @interface MKWindDirection : NSObject<NSCoding>
 @property (nonatomic, strong) NSString *direction;
-@property (nonatomic) CGFloat degrees;
+@property (nonatomic) double degrees;
 @end
 /////////////////////////////////////////////////////
 
@@ -128,7 +127,7 @@
 /**
  Barometric pressure
  */
-@property (nonatomic)CGFloat pressure_inches;
+@property (nonatomic)double pressure_inches;
 
 /**
  UV index
