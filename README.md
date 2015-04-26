@@ -60,7 +60,7 @@ You'll need a [Weather Underground API key](http://www.wunderground.com/weather/
     }];
 ````
 
-### Getting the forecast for the next 3 days with a small summary
+### Getting  a small forecast summary for the next 3 days 
 ````smalltalk
     CLGeocoder *geocoder = [CLGeocoder new];
     [geocoder geocodeAddressString:@"New Mexico" completionHandler:^(NSArray *placemarks, NSError *error)     {
