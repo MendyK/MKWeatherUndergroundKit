@@ -10,5 +10,6 @@
 
 @interface NSString (Reversal)
 - (NSString *)mk_reverseString: (NSString *)stringToReverse;
+- (double)mk_safeDoubleValue;
 
 @end

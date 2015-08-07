@@ -12,7 +12,7 @@
 #import "MKWeatherCondition.h"
 #import "Climacons.h"
 #import "NSString+Reversal.h"
-#import "NSDictionary+SafeValues.h"
+#import "KM_NSDictionary+SafeValues.h"
 
 /**
  Check if given option is present.
@@ -31,9 +31,10 @@
     return self;
 }
 #pragma mark - Parsing
+
 - (id)parseJson: (id)JSON
 {
-    //    [self printNumber:self.parsingType];
+    [self checkForErrorWithJSON: JSON];
     
     if (OptionPresent(self.parsingType, MKWeatherRequestType10DayForecast)))
     {
@@ -64,6 +65,7 @@
 }
 
 #pragma mark Specific Types
+
 - (NSArray *)parse10DayForecastWithJSON:(id) JSON
 {
     NSDictionary *forecast = JSON[@"forecast"];
@@ -76,7 +78,7 @@
     for (NSDictionary *day in simpleForecastDay) {
         MKWeatherCondition *condition = [[MKWeatherCondition alloc]init];
         
-        condition.date = [NSDate dateWithTimeIntervalSince1970:[[[day km_safeDictionaryForKey:@"date"] km_safeNumberForKey:@"epoch"]integerValue]];
+        condition.date = [NSDate dateWithTimeIntervalSince1970:[[[day km_safeDictionaryForKey:@"date"] km_safeStringForKey:@"epoch"]integerValue]];
 
         condition.summary = [day km_safeStringForKey:@"conditions"];
         condition.iconImageURL = [NSURL URLWithString:[day km_safeStringForKey:@"icon_url"]];
@@ -96,19 +98,21 @@
     }
     return [tempDayArray copy];
 }
+
 - (NSArray *)parse10DaySummariesWithJson: (id) summaries
 {
     return nil;
 }
+
 - (MKWeatherCondition *)parseCurrentWeatherConditionsWithJSON: (id)JSON
 {
-    NSDictionary *weatherDict = JSON[@"current_observation"];
+    NSDictionary *weatherDict = [JSON km_safeDictionaryForKey:@"current_observation"];
     if (!weatherDict) {
         return nil;
     }
     MKWeatherCondition *currentWeather = [MKWeatherCondition new];
     
-    NSDictionary *locationInfo = weatherDict[@"display_location"];
+    NSDictionary *locationInfo = [weatherDict km_safeDictionaryForKey:@"display_location"];
     
     currentWeather.temperature = [MKTemperature new];
     currentWeather.windChill = [MKTemperature new];
@@ -118,32 +122,36 @@
     currentWeather.dewPoint = [MKTemperature new];
     currentWeather.feelsLike = [MKTemperature new];
     currentWeather.visibility = [MKDistance new];
-    currentWeather.lastUpdated = locationInfo[@"observation_time"];
-    currentWeather.date = [NSDate dateWithTimeIntervalSince1970:[weatherDict[@"observation_epoch"]integerValue]];
-    currentWeather.summary = weatherDict[@"weather"];
-    currentWeather.temperature.f = [weatherDict[@"temp_f"]doubleValue];
-    currentWeather.temperature.c = [weatherDict[@"temp_c"]doubleValue];
-    currentWeather.relativeHumidity = weatherDict[@"relative_humidity"];
-    currentWeather.dewPoint.f = [weatherDict [@"dewpoint_f"]doubleValue];
-    currentWeather.dewPoint.c = [weatherDict [@"dewpoint_c"]doubleValue];
-    currentWeather.feelsLike.f = [weatherDict [@"feelslike_f"]doubleValue];
-    currentWeather.feelsLike.c = [weatherDict [@"feelslike_c"]doubleValue];
-    currentWeather.visibility.mph = [weatherDict[@"visibility_mi"]doubleValue];
-    currentWeather.visibility.kph = [weatherDict[@"visibility_km"]doubleValue];
-    currentWeather.pressure_inches = [weatherDict[@"pressure_in"]doubleValue];
-    currentWeather.windSummary = weatherDict[@"wind_string"];
-    currentWeather.windDirection.direction = weatherDict[@"wind_dir"];
-    currentWeather.windDirection.degrees = [weatherDict[@"wind_degrees"]doubleValue];
-    currentWeather.windSpeed.mph = [weatherDict[@"wind_mph"]doubleValue];
-    currentWeather.windSpeed.kph = [weatherDict[@"wind_kph"]doubleValue];
-    currentWeather.windGust.mph = [weatherDict[@"wind_gust_mph"]doubleValue];
-    currentWeather.windGust.kph = [weatherDict[@"wind_gust_kph"]doubleValue];
-    currentWeather.windChill.f = [weatherDict [@"windchill_f"]doubleValue];
-    currentWeather.windChill.c = [weatherDict [@"windchill_c"]doubleValue];
-    currentWeather.UVIndex = [weatherDict[@"UV"]integerValue];
-    currentWeather.iconName = weatherDict[@"icon"];
-    currentWeather.iconImageURL = [NSURL URLWithString:weatherDict[@"icon_url"]];
-    currentWeather.climacon = [self climaconForIconLink:weatherDict[@"icon_url"] name:currentWeather.iconName];
+    
+    currentWeather.lastUpdated = [locationInfo km_safeStringForKey:@"observation_time"];
+    currentWeather.date = [NSDate dateWithTimeIntervalSince1970:[[weatherDict km_safeStringForKey:@"observation_epoch"]integerValue]];
+    currentWeather.summary = [weatherDict km_safeStringForKey:@"weather"];
+    currentWeather.relativeHumidity = weatherDict[@"relative_humidity"];//TT
+    currentWeather.temperature.f = [[weatherDict km_safeNumberForKey:@"temp_f"]doubleValue];
+    currentWeather.temperature.c = [[weatherDict km_safeNumberForKey:@"temp_c"]doubleValue];
+    currentWeather.dewPoint.f = [[weatherDict km_safeNumberForKey:@"dewpoint_f"]doubleValue];
+    currentWeather.dewPoint.c = [[weatherDict km_safeNumberForKey:@"dewpoint_c"]doubleValue];
+    currentWeather.feelsLike.f = [[weatherDict km_safeStringForKey:@"feelslike_f"]mk_safeDoubleValue];
+    currentWeather.feelsLike.c = [[weatherDict km_safeStringForKey:@"feelslike_c"]mk_safeDoubleValue];
+    currentWeather.visibility.mph = [[weatherDict km_safeStringForKey:@"visibility_mi"]mk_safeDoubleValue];
+    currentWeather.visibility.kph = [[weatherDict km_safeStringForKey:@"visibility_km"]mk_safeDoubleValue];
+    currentWeather.pressure_inches = [[weatherDict km_safeStringForKey:@"pressure_in"]mk_safeDoubleValue];
+    
+    
+    currentWeather.windSummary = [weatherDict km_safeStringForKey:@"wind_string"];
+    currentWeather.windDirection.direction = [weatherDict km_safeStringForKey:@"wind_dir"];
+    currentWeather.windDirection.degrees = [[weatherDict km_safeNumberForKey:@"wind_degrees"]doubleValue];
+    currentWeather.windSpeed.mph = [[weatherDict km_safeNumberForKey:@"wind_mph"]doubleValue];
+    currentWeather.windSpeed.kph = [[weatherDict km_safeNumberForKey:@"wind_kph"]doubleValue];
+    currentWeather.windGust.mph = [[weatherDict km_safeStringForKey: @"wind_gust_mph"] mk_safeDoubleValue];
+    currentWeather.windGust.kph = [[weatherDict km_safeStringForKey: @"wind_gust_kph"]mk_safeDoubleValue];
+    currentWeather.windChill.f = [[weatherDict km_safeStringForKey:@"windchill_f"]mk_safeDoubleValue];
+    currentWeather.windChill.c = [[weatherDict km_safeStringForKey:@"windchill_c"]mk_safeDoubleValue];
+    currentWeather.UVIndex = [[weatherDict km_safeStringForKey:@"UV"]integerValue];
+    
+    currentWeather.iconName = [weatherDict km_safeStringForKey:@"icon"];
+    currentWeather.iconImageURL = [NSURL URLWithString:[weatherDict km_safeStringForKey:@"icon_url"]];
+    currentWeather.climacon = [self climaconForIconLink:[weatherDict km_safeStringForKey:@"icon_url"] name:currentWeather.iconName];
     return currentWeather;
 }
 
@@ -182,6 +190,7 @@
     }
     return hourlyWeatherComponents;
 }
+
 - (NSArray *)parse3DayWeatherForecastWithJSON: (id) JSON
 {
     NSDictionary *forecast = JSON[@"forecast"];
@@ -232,7 +241,9 @@
     }
     return tempSummary;
 }
+
 #pragma mark - Climacons
+
 - (Climacon)climaconForIconLink:(NSString *)link name: (NSString *)name
 {
     Climacon icon;
@@ -269,4 +280,19 @@
     /* More - http://www.wunderground.com/weather/api/d/docs?d=resources/phrase-glossary&MR=1#current_condition_phrases */
     return icon;
 }
+
+#pragma mark - Error checking
+
+- (void)checkForErrorWithJSON: (id)JSON
+{
+    NSDictionary *response = [JSON km_safeDictionaryForKey:@"response"];
+    NSDictionary *possibleError = [response km_safeDictionaryForKey:@"error"];
+    BOOL isError = [[possibleError km_safeStringForKey:@"type"] isEqualToString: @"keynotfound"];
+    //    NSString *descriptionString = [possibleError km_safeStringForKey:@"description"];
+
+    if (isError) {
+        [NSException raise:@"API key not found" format:@"Please check your api key"];
+    }
+}
+
 @end

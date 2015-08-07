@@ -21,4 +21,12 @@
     return reversedString;
 }
 
+- (double)mk_safeDoubleValue
+{
+    //To be further implemented
+    if (self.length == 0) {
+        return 0;
+    }
+    return [self doubleValue];
+}
 @end
