@@ -27,8 +27,6 @@
     NSNumber* number = nil;
     
     id obj = [self objectForKey:key];
-    NSString *classKind = NSStringFromClass([obj class]);
-
     if ([obj isKindOfClass:[NSNumber class]]){
         number = obj;
     }

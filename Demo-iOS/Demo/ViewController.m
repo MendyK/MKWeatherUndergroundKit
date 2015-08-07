@@ -10,6 +10,7 @@
 #import "MKWUndergroundKit.h"
 
 @interface ViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *climaconLabel;
 @property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *location;
@@ -19,7 +20,8 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
     CLGeocoder *geocoder = [CLGeocoder new];

@@ -5,6 +5,7 @@
 //  Copyright (c) 2015 Mendy Krinsky. All rights reserved.
 //
 //  Licensed under the MIT license.
+
 #import "NSString+Reversal.h"
 
 @implementation NSString (Reversal)

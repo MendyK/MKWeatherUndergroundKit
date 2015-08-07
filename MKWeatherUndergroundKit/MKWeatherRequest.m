@@ -15,9 +15,11 @@ NSString *const MKWeatherRequestErrorDomain = @"MKWeatherRequestErrorDomain";
 @interface MKWeatherRequest()
 
 @end
+
 @implementation MKWeatherRequest
 
 #pragma mark - Initializers
+
 - (instancetype)initWithType: (MKWeatherRequestType)type location: (CLLocation *)location
 {
     if (self = [super init]) {
@@ -26,20 +28,24 @@ NSString *const MKWeatherRequestErrorDomain = @"MKWeatherRequestErrorDomain";
     }
     return self;
 }
+
 - (instancetype)init
 {
     return [self initWithType:NAN location:nil];
 }
+
 + (instancetype)requestWithType: (MKWeatherRequestType)requestType location: (CLLocation *)location
 {
     return [[self alloc]initWithType:requestType location:location];
 }
+
 + (instancetype)requestWithType: (MKWeatherRequestType)requestType
 {
     return [[self alloc]initWithType:requestType location:nil];
 }
 
 #pragma mark - Requests
+
 - (void)performRequestWithHandler: (MKWeatherRequestCompletion)completionHandler
 {
     NSURL *requestURL = [self urlForRequestType:self.requestType];
@@ -96,10 +102,9 @@ NSString *const MKWeatherRequestErrorDomain = @"MKWeatherRequestErrorDomain";
     }
     CLLocationCoordinate2D coords = self.location.coordinate;
     
-    NSString *apiKey = self.weatherUndergroundApiKey;
-    NSAssert(apiKey.length != 0 || apiKey, @"Please set the API key");
+    NSAssert(self.weatherUndergroundApiKey.length != 0, @"Please set the API key");
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/%@/",kBaseURL, apiKey, requestTypeString];
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@/%@/",kBaseURL, self.weatherUndergroundApiKey, requestTypeString];
     if ([self.language length] > 0) {
         urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"lang:%@/",self.language]];
     }
@@ -107,6 +112,7 @@ NSString *const MKWeatherRequestErrorDomain = @"MKWeatherRequestErrorDomain";
     
     return [NSURL URLWithString:urlString];
 }
+
 - (id)JSONDictFromResponseData: (NSData *)data
 {
     NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data

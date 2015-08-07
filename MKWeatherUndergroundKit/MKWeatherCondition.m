@@ -5,10 +5,13 @@
 //  Copyright (c) 2015 Mendy Krinsky. All rights reserved.
 //
 //  Licensed under the MIT license.
+
 #import "MKWeatherCondition.h"
 
 #pragma mark - MKTemperature implementation
+
 @implementation MKTemperature;
+
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super init];
@@ -18,6 +21,7 @@
     }
     return self;
 }
+
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeDouble:self.f forKey:@"mk_farenheit"];
@@ -27,7 +31,9 @@
 @end
 
 #pragma mark - MKDistance implementation
+
 @implementation MKDistance;
+
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super init];
@@ -37,6 +43,7 @@
     }
     return self;
 }
+
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeDouble:self.mph forKey:@"mk_mph"];
@@ -45,7 +52,9 @@
 @end
 
 #pragma mark - MKWindDirection implementation
+
 @implementation MKWindDirection
+
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super init];
@@ -55,6 +64,7 @@
     }
     return self;
 }
+
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.direction forKey:@"mk_direction"];
@@ -65,6 +75,7 @@
 #pragma mark - MKWeatherCondition implementation
 
 @implementation MKWeatherCondition
+
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super init];
@@ -97,6 +108,7 @@
     }
     return self;
 }
+
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.iconName forKey:@"mk_iconName"];

@@ -22,7 +22,9 @@
 #pragma mark - Implementation
 
 @implementation MKWeatherParser
+
 #pragma mark - Initializers
+
 - (instancetype)initWithType:(MKWeatherRequestType)parsingType
 {
     if (self = [super init]) {
@@ -30,6 +32,7 @@
     }
     return self;
 }
+
 #pragma mark - Parsing
 
 - (id)parseJson: (id)JSON
@@ -122,7 +125,6 @@
     currentWeather.dewPoint = [MKTemperature new];
     currentWeather.feelsLike = [MKTemperature new];
     currentWeather.visibility = [MKDistance new];
-    
     currentWeather.lastUpdated = [locationInfo km_safeStringForKey:@"observation_time"];
     currentWeather.date = [NSDate dateWithTimeIntervalSince1970:[[weatherDict km_safeStringForKey:@"observation_epoch"]integerValue]];
     currentWeather.summary = [weatherDict km_safeStringForKey:@"weather"];
@@ -136,8 +138,6 @@
     currentWeather.visibility.mph = [[weatherDict km_safeStringForKey:@"visibility_mi"]mk_safeDoubleValue];
     currentWeather.visibility.kph = [[weatherDict km_safeStringForKey:@"visibility_km"]mk_safeDoubleValue];
     currentWeather.pressure_inches = [[weatherDict km_safeStringForKey:@"pressure_in"]mk_safeDoubleValue];
-    
-    
     currentWeather.windSummary = [weatherDict km_safeStringForKey:@"wind_string"];
     currentWeather.windDirection.direction = [weatherDict km_safeStringForKey:@"wind_dir"];
     currentWeather.windDirection.degrees = [[weatherDict km_safeNumberForKey:@"wind_degrees"]doubleValue];
@@ -148,7 +148,6 @@
     currentWeather.windChill.f = [[weatherDict km_safeStringForKey:@"windchill_f"]mk_safeDoubleValue];
     currentWeather.windChill.c = [[weatherDict km_safeStringForKey:@"windchill_c"]mk_safeDoubleValue];
     currentWeather.UVIndex = [[weatherDict km_safeStringForKey:@"UV"]integerValue];
-    
     currentWeather.iconName = [weatherDict km_safeStringForKey:@"icon"];
     currentWeather.iconImageURL = [NSURL URLWithString:[weatherDict km_safeStringForKey:@"icon_url"]];
     currentWeather.climacon = [self climaconForIconLink:[weatherDict km_safeStringForKey:@"icon_url"] name:currentWeather.iconName];
