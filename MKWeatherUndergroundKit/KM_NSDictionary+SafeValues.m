@@ -59,17 +59,5 @@
     return dictionary;
 }
 
-- (UIImage*)km_safeImageForKey:(id)key;
-{
-    UIImage* image = nil;
-    id obj = [self objectForKey:key];
-    if ([obj isKindOfClass:[UIImage class]]) {
-        image = obj;
-    }
-    else {
-        image = nil;
-    }
-    return image;
-}
 
 @end

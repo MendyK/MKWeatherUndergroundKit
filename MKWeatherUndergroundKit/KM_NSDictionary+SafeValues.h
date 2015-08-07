@@ -15,6 +15,5 @@
 - (NSNumber*)km_safeNumberForKey:(id)key;
 - (NSArray*)km_safeArrayForKey:(id)key;
 - (NSDictionary*)km_safeDictionaryForKey:(id)key;
-- (UIImage*)km_safeImageForKey:(id)key;
 
 @end
