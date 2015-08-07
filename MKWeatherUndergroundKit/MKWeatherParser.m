@@ -12,6 +12,7 @@
 #import "MKWeatherCondition.h"
 #import "Climacons.h"
 #import "NSString+Reversal.h"
+#import "NSDictionary+SafeValues.h"
 
 /**
  Check if given option is present.
@@ -69,25 +70,28 @@
     if (!forecast) {
         return nil;
     }
-    NSArray *simpleForecastDay = forecast[@"simpleforecast"][@"forecastday"];
-    
+    NSArray *simpleForecastDay = [[forecast km_safeDictionaryForKey:@"simpleforecast"] km_safeArrayForKey:@"forecastday"];
+
     NSMutableArray *tempDayArray = [NSMutableArray array];
     for (NSDictionary *day in simpleForecastDay) {
         MKWeatherCondition *condition = [[MKWeatherCondition alloc]init];
-        condition.date = [NSDate new];
-        condition.date = [NSDate dateWithTimeIntervalSince1970:[day[@"date"][@"epoch"]integerValue]];
-        condition.summary = day[@"conditions"];
-        condition.iconImageURL = day [@"icon_url"];
-        condition.iconName = day[@"icon"];
         
+        condition.date = [NSDate dateWithTimeIntervalSince1970:[[[day km_safeDictionaryForKey:@"date"] km_safeNumberForKey:@"epoch"]integerValue]];
+
+        condition.summary = [day km_safeStringForKey:@"conditions"];
+        condition.iconImageURL = [NSURL URLWithString:[day km_safeStringForKey:@"icon_url"]];
+        condition.iconName = [day km_safeStringForKey:@"icon"];
+        
+        NSDictionary *highTemps = [day km_safeDictionaryForKey:@"high"];
+        NSDictionary *lowTemps = [day km_safeDictionaryForKey:@"low"];
         condition.highTemp = [MKTemperature new];
         condition.lowTemp = [MKTemperature new];
-        condition.highTemp.f = [day[@"high"][@"fahrenheit"]doubleValue];
-        condition.highTemp.c = [day[@"high"][@"celsius"]doubleValue];
-        condition.lowTemp.f = [day[@"low"][@"fahrenheit"]doubleValue];
-        condition.lowTemp.c = [day[@"low"][@"celsius"]doubleValue];
-        condition.climacon = [self climaconForIconLink:day [@"icon_url"] name:condition.iconName];
-        
+        condition.highTemp.f = [highTemps[@"fahrenheit"]doubleValue];
+        condition.highTemp.c = [highTemps[@"celsius"]doubleValue];
+        condition.lowTemp.f = [lowTemps[@"fahrenheit"]doubleValue];
+        condition.lowTemp.c = [lowTemps[@"celsius"]doubleValue];
+
+        condition.climacon = [self climaconForIconLink:[day km_safeStringForKey:@"icon_url"] name:condition.iconName];
         [tempDayArray addObject:condition];
     }
     return [tempDayArray copy];
@@ -114,7 +118,6 @@
     currentWeather.dewPoint = [MKTemperature new];
     currentWeather.feelsLike = [MKTemperature new];
     currentWeather.visibility = [MKDistance new];
-    
     currentWeather.lastUpdated = locationInfo[@"observation_time"];
     currentWeather.date = [NSDate dateWithTimeIntervalSince1970:[weatherDict[@"observation_epoch"]integerValue]];
     currentWeather.summary = weatherDict[@"weather"];

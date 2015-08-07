@@ -30,6 +30,7 @@
         
         MKWeatherRequest *request = [MKWeatherRequest requestWithType:MKWeatherRequestTypeCurrentConditions
                                                              location:placemark.location];
+        request.weatherUndergroundApiKey = @"API_KEY_HERE";
         [request performRequestWithHandler:^(NSError *error, id responseObject) {
             
             MKWeatherCondition *current = responseObject;

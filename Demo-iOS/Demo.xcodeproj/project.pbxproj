@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC0524611B7517C500B1B45F /* KM_NSArray+SafeValues.m in Sources */ = {isa = PBXBuildFile; fileRef = AC05245E1B7517C500B1B45F /* KM_NSArray+SafeValues.m */; };
+		AC0524621B7517C500B1B45F /* KM_NSDictionary+SafeValues.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0524601B7517C500B1B45F /* KM_NSDictionary+SafeValues.m */; };
 		ACA69BD81ABBC6B700688283 /* Climacons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACA69BCE1ABBC6B700688283 /* Climacons.ttf */; };
 		ACA69BD91ABBC6B700688283 /* MKWeatherCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA69BD01ABBC6B700688283 /* MKWeatherCondition.m */; };
 		ACA69BDA1ABBC6B700688283 /* MKWeatherParser.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA69BD21ABBC6B700688283 /* MKWeatherParser.m */; };
@@ -33,6 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC05245D1B7517C500B1B45F /* KM_NSArray+SafeValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KM_NSArray+SafeValues.h"; sourceTree = "<group>"; };
+		AC05245E1B7517C500B1B45F /* KM_NSArray+SafeValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KM_NSArray+SafeValues.m"; sourceTree = "<group>"; };
+		AC05245F1B7517C500B1B45F /* KM_NSDictionary+SafeValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KM_NSDictionary+SafeValues.h"; sourceTree = "<group>"; };
+		AC0524601B7517C500B1B45F /* KM_NSDictionary+SafeValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KM_NSDictionary+SafeValues.m"; sourceTree = "<group>"; };
 		ACA69BCD1ABBC6B700688283 /* Climacons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Climacons.h; sourceTree = "<group>"; };
 		ACA69BCE1ABBC6B700688283 /* Climacons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Climacons.ttf; sourceTree = "<group>"; };
 		ACA69BCF1ABBC6B700688283 /* MKWeatherCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWeatherCondition.h; sourceTree = "<group>"; };
@@ -80,6 +86,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC0524591B750F4A00B1B45F /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				AC05245D1B7517C500B1B45F /* KM_NSArray+SafeValues.h */,
+				AC05245E1B7517C500B1B45F /* KM_NSArray+SafeValues.m */,
+				AC05245F1B7517C500B1B45F /* KM_NSDictionary+SafeValues.h */,
+				AC0524601B7517C500B1B45F /* KM_NSDictionary+SafeValues.m */,
+				ACA69BD61ABBC6B700688283 /* NSString+Reversal.h */,
+				ACA69BD71ABBC6B700688283 /* NSString+Reversal.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		ACA69BCC1ABBC6B700688283 /* MKWeatherUndergroundKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,8 +111,7 @@
 				ACA69BD31ABBC6B700688283 /* MKWeatherRequest.h */,
 				ACA69BD41ABBC6B700688283 /* MKWeatherRequest.m */,
 				ACA69BD51ABBC6B700688283 /* MKWUndergroundKit.h */,
-				ACA69BD61ABBC6B700688283 /* NSString+Reversal.h */,
-				ACA69BD71ABBC6B700688283 /* NSString+Reversal.m */,
+				AC0524591B750F4A00B1B45F /* Categories */,
 			);
 			name = MKWeatherUndergroundKit;
 			path = ../../MKWeatherUndergroundKit;
@@ -267,8 +285,10 @@
 				ACA69BDB1ABBC6B700688283 /* MKWeatherRequest.m in Sources */,
 				ACBB005E1A9581B00013F55A /* ViewController.m in Sources */,
 				ACBB00C71A95897E0013F55A /* SearchViewController.m in Sources */,
+				AC0524611B7517C500B1B45F /* KM_NSArray+SafeValues.m in Sources */,
 				ACA69BDA1ABBC6B700688283 /* MKWeatherParser.m in Sources */,
 				ACA69BDC1ABBC6B700688283 /* NSString+Reversal.m in Sources */,
+				AC0524621B7517C500B1B45F /* KM_NSDictionary+SafeValues.m in Sources */,
 				ACBB005B1A9581B00013F55A /* AppDelegate.m in Sources */,
 				ACBB00581A9581B00013F55A /* main.m in Sources */,
 			);

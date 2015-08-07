@@ -78,6 +78,11 @@ typedef NS_ENUM(NSInteger, MKWeatherRequestError)
  */
 @property (nonatomic, strong)CLLocation *location;
 
+/**
+ The Weather Underground API key
+ */
+@property (nonatomic, strong) NSString *weatherUndergroundApiKey;
+
 // -----
 // @name Weather Request Initializers
 // -----

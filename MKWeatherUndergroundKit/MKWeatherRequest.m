@@ -9,7 +9,6 @@
 #import "MKWeatherRequest.h"
 #import "MKWeatherParser.h"
 
-NSString *const kWUndergroundApi_key = @"INSERT API KEY HERE";
 NSString *const kBaseURL = @"http://api.wunderground.com/api";
 NSString *const MKWeatherRequestErrorDomain = @"MKWeatherRequestErrorDomain";
 
@@ -97,8 +96,10 @@ NSString *const MKWeatherRequestErrorDomain = @"MKWeatherRequestErrorDomain";
     }
     CLLocationCoordinate2D coords = self.location.coordinate;
     
+    NSString *apiKey = self.weatherUndergroundApiKey;
+    NSAssert(apiKey.length != 0 || apiKey, @"Please set the API key");
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@/%@/",kBaseURL,kWUndergroundApi_key, requestTypeString];
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@/%@/",kBaseURL, apiKey, requestTypeString];
     if ([self.language length] > 0) {
         urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"lang:%@/",self.language]];
     }
