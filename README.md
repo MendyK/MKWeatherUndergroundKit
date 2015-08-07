@@ -16,6 +16,7 @@ You'll need a [Weather Underground API key](http://www.wunderground.com/weather/
         //Initialize request
         MKWeatherRequest *request = [MKWeatherRequest requestWithType:MKWeatherRequestTypeCurrentConditions
                                                              location:placemark.location];
+        request.weatherUndergroundApiKey = @"API_KEY_HERE";
         [request performRequestWithHandler:^(NSError *error, id responseObject) {
             MKWeatherCondition *currentConditions = responseObject;
             //Use currentConditions object here
@@ -31,6 +32,7 @@ You'll need a [Weather Underground API key](http://www.wunderground.com/weather/
         
         MKWeatherRequest *request = [MKWeatherRequest requestWithType:MKWeatherRequestTypeHourly
                                                              location:placemark.location];
+        request.weatherUndergroundApiKey = @"API_KEY_HERE";
         [request performRequestWithHandler:^(NSError *error, id responseObject) {
             NSArray *hours = responseObject;
             //Array of MKWeatherCondition Objects
@@ -46,6 +48,7 @@ You'll need a [Weather Underground API key](http://www.wunderground.com/weather/
         
         MKWeatherRequest *request = [MKWeatherRequest requestWithType:MKWeatherRequestType3DayForecast
                                                              location:placemark.location];
+        request.weatherUndergroundApiKey = @"API_KEY_HERE";
         [request performRequestWithHandler:^(NSError *error, id responseObject) {
             NSArray *threeDayForecast = responseObject;
             //Here responseObject is an array that contains 4 objects: tonight, and the next three days.
@@ -68,6 +71,7 @@ You'll need a [Weather Underground API key](http://www.wunderground.com/weather/
         
         MKWeatherRequest *request = [MKWeatherRequest requestWithType:MKWeatherRequestType3DayForecastSummary
                                                              location:placemark.location];
+        request.weatherUndergroundApiKey = @"API_KEY_HERE";
         [request performRequestWithHandler:^(NSError *error, id responseObject) {
             NSArray *threeDayForecast = responseObject;
             //Here responseObject is an array which contains 8 objects
