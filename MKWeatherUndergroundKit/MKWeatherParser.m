@@ -157,7 +157,7 @@
 
 - (NSArray *)parseHourlyDataWithJSON: (id)JSON
 {
-    NSArray *hourlyForecasts = JSON[@"hourly_forecast"];
+    NSArray *hourlyForecasts = [JSON km_safeArrayForKey:@"hourly_forecast"];
     if (!hourlyForecasts) {
         return nil;
     }
@@ -168,23 +168,26 @@
         MKWeatherCondition *component = [MKWeatherCondition new];
         
         //hourlyTemp
-        NSDictionary *tempStrings = hour[@"temp"];
+        NSDictionary *tempStrings = [hour km_safeDictionaryForKey:@"temp"];
         component.temperature = [MKTemperature new];
         component.dewPoint = [MKTemperature new];
         component.windSpeed = [MKDistance new];
         component.humudity = [NSString new];
         
-        component.temperature.f = [tempStrings[@"english"]doubleValue];
-        component.temperature.c = [tempStrings[@"metric"]doubleValue];
-        component.date = [NSDate dateWithTimeIntervalSince1970:[hour[@"FCTTIME"][@"epoch"]integerValue]];
-        component.iconName = [NSString stringWithFormat:@"%@",hour[@"icon"]];
-        component.summary = hour[@"condition"];
-        component.iconImageURL = [NSURL URLWithString:hour[@"icon_url"]];
-        component.climacon = [self climaconForIconLink:hour[@"icon_url"] name:component.iconName];
-        component.dewPoint.f = [hour[@"dewpoint"][@"english"]doubleValue];
-        component.dewPoint.c = [hour[@"dewpoint"][@"metric"]doubleValue];
-        component.windSpeed.mph = [hour[@"wspd"][@"english"]doubleValue];
-        component.windSpeed.kph = [hour[@"wspd"][@"metric"]doubleValue];
+        component.temperature.f = [[tempStrings km_safeStringForKey:@"english"]mk_safeDoubleValue];
+        component.temperature.c = [[tempStrings km_safeStringForKey:@"metric"]mk_safeDoubleValue];
+        component.date = [NSDate dateWithTimeIntervalSince1970:[[[hour km_safeDictionaryForKey:@"FCTTIME"]km_safeStringForKey:@"epoch"]integerValue]];
+        component.iconName = [NSString stringWithFormat:@"%@",[hour km_safeStringForKey:@"icon"]];
+        component.summary = [hour km_safeStringForKey:@"condition"];
+        component.iconImageURL = [NSURL URLWithString:[hour km_safeStringForKey:@"icon_url"]];
+        component.climacon = [self climaconForIconLink:[hour km_safeStringForKey:@"icon_url"] name:component.iconName];
+        NSDictionary *dewPoint = [hour km_safeDictionaryForKey:@"dewpoint"];
+        NSDictionary *windSpeed = [hour km_safeDictionaryForKey:@"wspd"];
+        component.dewPoint.f = [[dewPoint km_safeStringForKey:@"english"]mk_safeDoubleValue];
+        component.dewPoint.c = [[dewPoint km_safeStringForKey:@"metric"]mk_safeDoubleValue];
+        component.windSpeed.mph = [[windSpeed km_safeStringForKey:@"english"]mk_safeDoubleValue];
+        component.windSpeed.kph = [[windSpeed km_safeStringForKey:@"metric"]mk_safeDoubleValue];
+
         component.humudity = hour[@"humidity"];
         [hourlyWeatherComponents addObject:component];
     }
@@ -193,50 +196,53 @@
 
 - (NSArray *)parse3DayWeatherForecastWithJSON: (id) JSON
 {
-    NSDictionary *forecast = JSON[@"forecast"];
+    NSDictionary *forecast = [JSON km_safeDictionaryForKey:@"forecast"];
     if (!forecast) {
         return nil;
     }
     //simple forecast
-    NSDictionary *simpleForecast  = forecast[@"simpleforecast"];
-    NSArray *dayForecast = simpleForecast [@"forecastday"];
+    NSDictionary *simpleForecast = [forecast km_safeDictionaryForKey:@"simpleforecast"];
+    NSArray *dayForecast = [simpleForecast km_safeArrayForKey:@"forecastday"];
     
     NSMutableArray *tempDays = [NSMutableArray array];
     for (NSDictionary *day in dayForecast) {
+        
         MKWeatherCondition *component = [MKWeatherCondition new];
         component.highTemp = [MKTemperature new];
         component.lowTemp = [MKTemperature new];
         
-        component.highTemp.f = [day[@"high"][@"fahrenheit"]doubleValue];
-        component.highTemp.c = [day[@"high"][@"celsius"]doubleValue];
-        component.lowTemp.f = [day[@"low"][@"fahrenheit"]doubleValue];
-        component.lowTemp.c = [day[@"low"][@"celsius"]doubleValue];
-        component.averageHumudity = [day[@"avehumidity"]integerValue];
-        component.iconName = day[@"icon"];
-        component.iconImageURL = [NSURL URLWithString:day[@"icon_url"]];
-        component.summary = day[@"conditions"];
-        component.date = [NSDate dateWithTimeIntervalSince1970:[day[@"date"][@"epoch"]integerValue]];
-        component.climacon = [self climaconForIconLink:day[@"icon_url"] name:component.iconName];
+        NSDictionary *highTemps = [day km_safeDictionaryForKey:@"high"];
+        NSDictionary *lowTemps = [day km_safeDictionaryForKey:@"low"];
+        component.highTemp.f = [[highTemps km_safeStringForKey:@"fahrenheit"]mk_safeDoubleValue];
+        component.highTemp.c = [[highTemps km_safeStringForKey:@"celsius"]doubleValue];
+        component.lowTemp.f = [[lowTemps km_safeStringForKey:@"fahrenheit"] doubleValue];
+        component.lowTemp.c = [[lowTemps km_safeStringForKey:@"celsius"]doubleValue];
+        component.averageHumudity = [day [@"avehumidity"]integerValue];//TT
+        component.iconName = [day km_safeStringForKey:@"icon"];
+        component.iconImageURL = [NSURL URLWithString:[day km_safeStringForKey:@"icon_url"]];
+        component.summary = [day km_safeStringForKey:@"conditions"];
+        component.date = [NSDate dateWithTimeIntervalSince1970:[[[day km_safeDictionaryForKey:@"date"]km_safeStringForKey:@"epoch"]integerValue]];
+        component.climacon = [self climaconForIconLink:[day km_safeStringForKey:@"icon_url"] name:component.iconName];
         [tempDays addObject:component];
     }
     return tempDays;
 }
 - (NSArray *)parse3DaySummariesWithJSON: (id) summaries
 {
-    NSDictionary *forecast = summaries[@"forecast"];
+    NSDictionary *forecast = [summaries km_safeDictionaryForKey:@"forecast"];
     if (!forecast) {
         return nil;
     }
     //"txt_forecast"
-    NSDictionary *summaryForecast = forecast[@"txt_forecast"];
-    NSArray *dayNightForecast = summaryForecast[@"forecastday"];
+    NSDictionary *summaryForecast = [forecast km_safeDictionaryForKey:@"txt_forecast"];
+    NSArray *dayNightForecast = [summaryForecast km_safeArrayForKey:@"forecastday"];
     
     NSMutableArray *tempSummary = [NSMutableArray array];
     for (NSDictionary *dayOrNight in dayNightForecast) {
         MKWeatherCondition *component = [MKWeatherCondition new];
-        component.fullSummaryF = dayOrNight [@"fcttext"];
-        component.fullSummaryC = dayOrNight [@"fcttext_metric"];
-        component.generalTimeOfDayTitle = dayOrNight [@"title"];
+        component.fullSummaryF = [dayOrNight km_safeStringForKey:@"fcttext"];
+        component.fullSummaryC = [dayOrNight km_safeStringForKey:@"fcttext_metric"];
+        component.generalTimeOfDayTitle = [dayOrNight km_safeStringForKey:@"title"];
         [tempSummary addObject:component];
     }
     return tempSummary;
@@ -288,9 +294,10 @@
     NSDictionary *response = [JSON km_safeDictionaryForKey:@"response"];
     NSDictionary *possibleError = [response km_safeDictionaryForKey:@"error"];
     BOOL isError = [[possibleError km_safeStringForKey:@"type"] isEqualToString: @"keynotfound"];
-    //    NSString *descriptionString = [possibleError km_safeStringForKey:@"description"];
+    NSString *descriptionString = [possibleError km_safeStringForKey:@"description"];
 
     if (isError) {
+        NSLog(@"%@", descriptionString);
         [NSException raise:@"API key not found" format:@"Please check your api key"];
     }
 }
