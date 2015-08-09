@@ -7,6 +7,7 @@
 //  Licensed under the MIT license.
 
 #pragma mark - Imports
+
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
@@ -83,6 +84,12 @@ typedef NS_ENUM(NSInteger, MKWeatherRequestError)
  */
 @property (nonatomic, strong) NSString *weatherUndergroundApiKey;
 
+/**
+ The request's timeout interval, in seconds
+ Default is 60 seconds
+ */
+@property (nonatomic) NSTimeInterval timeoutInterval;
+
 // -----
 // @name Weather Request Initializers
 // -----
@@ -117,7 +124,7 @@ typedef NS_ENUM(NSInteger, MKWeatherRequestError)
  @param location Location of request
  @return Newly initialized request object.
 */
-- (instancetype)initWithType: (MKWeatherRequestType)type location: (CLLocation *)loc;
+- (instancetype)initWithType: (MKWeatherRequestType)type location: (CLLocation *)loc NS_DESIGNATED_INITIALIZER;
 
 // -----
 // @name Performing a Weather Request

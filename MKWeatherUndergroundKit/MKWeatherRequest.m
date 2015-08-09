@@ -25,6 +25,7 @@ NSString *const MKWeatherRequestErrorDomain = @"MKWeatherRequestErrorDomain";
     if (self = [super init]) {
         _location = location;
         _requestType = type;
+        _timeoutInterval = 60;
     }
     return self;
 }
@@ -55,22 +56,20 @@ NSString *const MKWeatherRequestErrorDomain = @"MKWeatherRequestErrorDomain";
                                            userInfo:nil], nil);
     }
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
-    request.timeoutInterval = 60.0;
+    request.timeoutInterval = self.timeoutInterval;
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                
         if (data){
-        MKWeatherParser *parser = [[MKWeatherParser alloc]initWithType:self.requestType];
-        
-        id weatherObject = [parser parseJson:[self JSONDictFromResponseData:data]];
-            if (weatherObject) {
+            NSError *parserError;
+            MKWeatherParser *parser = [[MKWeatherParser alloc]initWithType:self.requestType];
+            id weatherObject = [parser parseData:data error:&parserError];
+            
+            if (weatherObject && !parserError) {
                 completionHandler (nil, weatherObject);
-            }
-            else{
-                completionHandler([NSError errorWithDomain:MKWeatherRequestErrorDomain
-                                                      code:MKWeatherRequestParsingError
-                                                  userInfo:nil], weatherObject);
+            }else{
+                completionHandler (parserError, nil);
             }
         }
         else{
@@ -109,15 +108,7 @@ NSString *const MKWeatherRequestErrorDomain = @"MKWeatherRequestErrorDomain";
         urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"lang:%@/",self.language]];
     }
     urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"q/%f,%f,.json",coords.latitude, coords.longitude]];
-    
     return [NSURL URLWithString:urlString];
 }
 
-- (id)JSONDictFromResponseData: (NSData *)data
-{
-    NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data
-                                                         options:NSJSONReadingAllowFragments
-                                                           error:nil];
-    return JSON;
-}
 @end

@@ -35,6 +35,10 @@
         request.weatherUndergroundApiKey = @"API_KEY_HERE";
         [request performRequestWithHandler:^(NSError *error, id responseObject) {
             
+            if (error) {
+                NSLog(@"%@", [error localizedDescription]);
+                NSLog(@"%@", [error localizedRecoverySuggestion]);
+            }
             MKWeatherCondition *current = responseObject;
             weakSelf.climaconLabel.text = [NSString stringWithFormat:@"%c",
                                    current.climacon];

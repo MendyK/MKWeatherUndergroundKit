@@ -35,9 +35,26 @@
 
 #pragma mark - Parsing
 
-- (id)parseJson: (id)JSON
+- (id)parseData: (NSData *)data error: (NSError **)error
 {
-    [self checkForErrorWithJSON: JSON];
+    NSError *parsingError = nil;
+    NSDictionary *serializedDictionary = [self JSONDictFromResponseData:data error:&parsingError];
+    id weatherInfo = [self parseJson:serializedDictionary error:&parsingError];
+    if (parsingError) {
+        *error = parsingError;
+    }
+    
+    return weatherInfo;
+}
+
+- (id)parseJson: (id)JSON error:(NSError **)error
+{
+    NSError *apiKeyError = nil;
+    [self checkForErrorWithJSON: JSON error:&apiKeyError];
+    if (apiKeyError) {
+        *error = apiKeyError;
+        return nil;
+    }
     
     if (OptionPresent(self.parsingType, MKWeatherRequestType10DayForecast)))
     {
@@ -65,6 +82,14 @@
         //need to implement
     }
     return nil;
+}
+
+- (id)JSONDictFromResponseData: (NSData *)data error: (NSError **)error
+{
+    NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data
+                                                         options:NSJSONReadingAllowFragments
+                                                           error:error];
+    return JSON;
 }
 
 #pragma mark Specific Types
@@ -288,16 +313,23 @@
 
 #pragma mark - Error checking
 
-- (void)checkForErrorWithJSON: (id)JSON
+- (void)checkForErrorWithJSON: (id)JSON error:(NSError **)error
 {
     NSDictionary *response = [JSON km_safeDictionaryForKey:@"response"];
     NSDictionary *possibleError = [response km_safeDictionaryForKey:@"error"];
     BOOL isError = [[possibleError km_safeStringForKey:@"type"] isEqualToString: @"keynotfound"];
-    NSString *descriptionString = [possibleError km_safeStringForKey:@"description"];
-
+    
     if (isError) {
-        NSLog(@"%@", descriptionString);
-        [NSException raise:@"API key not found" format:@"Please check your api key"];
+        NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:@"Make sure your API key is correct" forKey:NSLocalizedRecoverySuggestionErrorKey];
+        NSString *descriptionString = [possibleError km_safeStringForKey:@"description"];
+        
+        if (descriptionString) {
+            [userInfo setObject:descriptionString forKey:NSLocalizedDescriptionKey];
+        }
+        
+        *error = [NSError errorWithDomain:MKWeatherRequestErrorDomain
+                                     code:MKWeatherRequestParsingError
+                                 userInfo:[userInfo copy]];
     }
 }
 
