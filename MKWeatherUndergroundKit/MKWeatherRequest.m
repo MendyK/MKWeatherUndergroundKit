@@ -9,7 +9,7 @@
 #import "MKWeatherRequest.h"
 #import "MKWeatherParser.h"
 
-NSString *const kBaseURL = @"http://api.wunderground.com/api";
+NSString *const kBaseURL = @"https://api.wunderground.com/api";
 NSString *const MKWeatherRequestErrorDomain = @"MKWeatherRequestErrorDomain";
 
 @interface MKWeatherRequest()
