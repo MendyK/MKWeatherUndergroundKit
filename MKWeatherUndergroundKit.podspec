@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "MKWeatherUndergroundKit"
-  s.version      = "0.8"
+  s.version      = "0.8.1"
   s.summary      = "A simple iOS and OS X library for retrieving weather information using the Weather Underground API"
   s.homepage     = "https://github.com/MendyK/MKWeatherUndergroundKit"
   s.license      = { :type => "MIT", :file => "LICENSE" }
