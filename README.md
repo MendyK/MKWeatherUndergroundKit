@@ -2,11 +2,11 @@
 A simple iOS and OS X library for retrieving weather information using the Weather Underground API
 
 
-##Getting Started
+## Getting Started
 
 You'll need a [Weather Underground API key](http://www.wunderground.com/weather/api/) to start.
 
-###Getting the Current Conditions
+### Getting the Current Conditions
 ````smalltalk
     //Get the location
     CLGeocoder *geocoder = [CLGeocoder new];
@@ -85,27 +85,27 @@ You'll need a [Weather Underground API key](http://www.wunderground.com/weather/
     }];
 ````
 
-###Climacons
+### Climacons
 
 `MKWeatherCondition` objects have a `climacon` property that contains an appropriate climacon character mapping for the weather condition description. The [Climacons Font](http://adamwhitcroft.com/climacons/font/) is a font set created by [Adam Whitcroft](http://adamwhitcroft.com/) featuring various weather-related icons. In order to use the `climacon` property, download the Climacons font and add it to your project. 
 
-##Dependencies
+## Dependencies
 This library uses `Core Location` to perform requests.
 
-##Architecture
+## Architecture
 `MKWeatherCondition` - A generic weather condition
 
 `MKWeatherParser` - Parses the weather information received from the Weather Underground API
 
 `MKWeatherRequest` - Represents a single request to the Weather Underground API
-##CocoaPods
+## CocoaPods
 
 To use this with CocoaPods, add `pod 'MKWeatherUndergroundKit'` to your podfile
 
-##Thanks
+## Thanks
 [Kevin Mindeguia](https://github.com/KMindeguia) for the NSDictionary/NSArray categories.
 
 [Comyar Zaheri](https://github.com/comyarzaheri) for the `Climacons.h` file and the `Climacons` description.
 
-##License
+## License
 See the `License` file
